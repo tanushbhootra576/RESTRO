@@ -1,0 +1,19 @@
+.coming-soon-container {
+    padding-top: 150px;
+    text-align: center;
+    height: 80vh;
+    font-family: 'Gill Sans', Calibri, sans-serif;
+    background-color: #fff8f1;
+    color: #333;
+}
+
+.coming-soon-container h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #ff5722;
+}
+
+.soon-text {
+    font-size: 1.5rem;
+    color: #555;
+}

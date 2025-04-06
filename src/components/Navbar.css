@@ -1,0 +1,48 @@
+#special {
+    background-image: url('/images/logo.png');
+    background-color: transparent;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 70px;
+    width: 200px;
+    border: none;
+}
+
+#menubar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 15px 0;
+    background: rgba(0, 0, 0, 0.856);
+    color: white;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    text-decoration: none;
+
+}
+
+.menu {
+    background: transparent;
+    color: white;
+    font-size: 1rem;
+    padding: 10px 15px;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+
+
+
+.menu:hover {
+    color: #ff7043;
+    background-color: rgb(26, 45, 46);
+    text-decoration: none;
+    border-radius: 15px;
+
+}

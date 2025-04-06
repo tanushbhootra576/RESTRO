@@ -1,0 +1,70 @@
+.home-banner {
+    height: 80vh;
+    background-image: url('/dish.png');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-left: 40px;
+}
+
+.home-slogan {
+    font-size: 3rem;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+}
+
+.top-picks {
+    padding: 40px;
+    text-align: center;
+}
+
+.cards {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 12px;
+    padding: 20px;
+    width: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transition: 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+.card img {
+    width: 100%;
+    border-radius: 8px;
+}
+
+.card-title {
+    font-size: 1.3rem;
+    margin: 10px 0;
+}
+
+.card-info {
+    font-size: 1rem;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 1.1rem;
+    color: green;
+    font-weight: bold;
+}
+
+.add-to-cart {
+    background-color: #111;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+}
