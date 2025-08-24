@@ -6,7 +6,7 @@
 
 body {
   font-family: 'Gill Sans', Calibri, sans-serif;
-  background-color: #fffefc;
+  background: linear-gradient(120deg, #fffefc 60%, #ffe0e9 100%);
   color: #333;
   line-height: 1.6;
   overflow-x: hidden;
@@ -20,4 +20,15 @@ button {
 
 Link {
   text-decoration: none;
+}
+
+/* Responsive utility classes */
+.hide-mobile {
+  display: block;
+}
+
+@media (max-width: 600px) {
+  .hide-mobile {
+    display: none !important;
+  }
 }

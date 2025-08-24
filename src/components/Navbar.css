@@ -11,17 +11,72 @@
 
 #menubar {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
     align-items: center;
-    padding: 15px 0;
-    background: rgba(0, 0, 0, 0.856);
+    padding: 10px 30px;
+    background: rgba(0, 0, 0, 0.92);
     color: white;
     position: fixed;
     top: 0;
     width: 100%;
     z-index: 999;
     text-decoration: none;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.12);
+}
 
+.nav-links {
+    display: flex;
+    gap: 10px;
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.bar {
+    width: 28px;
+    height: 3px;
+    background: #fff;
+    margin: 4px 0;
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+.mobile-menu {
+    position: absolute;
+    top: 70px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.97);
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 30px;
+    gap: 12px;
+    z-index: 1000;
+    animation: fadeIn 0.2s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .menu {
@@ -32,6 +87,7 @@
     border: none;
     text-decoration: none;
     cursor: pointer;
+    transition: background 0.2s, color 0.2s;
 }
 
 
@@ -44,5 +100,24 @@
     background-color: rgb(26, 45, 46);
     text-decoration: none;
     border-radius: 15px;
+}
 
+@media (max-width: 900px) {
+    #menubar {
+        padding: 10px 10px;
+    }
+
+    .nav-links {
+        gap: 2px;
+    }
+}
+
+@media (max-width: 700px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
 }
