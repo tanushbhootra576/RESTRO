@@ -78,6 +78,7 @@ web_modules/
 .env.test.local
 .env.production.local
 .env.local
+.env.*
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -122,9 +123,16 @@ dist
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
+# Editor/OS files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
 # yarn v2
 .yarn/cache
 .yarn/unplugged
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+config.bat

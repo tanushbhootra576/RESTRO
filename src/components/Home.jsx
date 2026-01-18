@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from './Navbar';
 import TopPicks from './TopPicks';
 import './Home.css';
 
@@ -8,7 +7,6 @@ const Home = () => {
         <div id="main">
             {/* Hero Section */}
             <div id="hero">
-                <Navbar />
                 <div id="hero-overlay">
                     <div id="hero-content">
                         <h1 id="slogan">Elevate Your Dining Experience</h1>

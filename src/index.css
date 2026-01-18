@@ -1,28 +1,138 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* Luxury Premium Restaurant Design */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Montserrat:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ===== CUSTOM GLOBAL STYLES ===== */
+
+@layer base {
+  body {
+    @apply bg-luxury-cream font-montserrat text-luxury-text-dark;
+  }
+
+  h1 {
+    @apply font-playfair text-h1 font-bold tracking-wider text-luxury-dark;
+  }
+
+  h2 {
+    @apply font-playfair text-h2 font-bold tracking-wide text-luxury-dark;
+  }
+
+  h3 {
+    @apply font-playfair text-h3 font-semibold tracking-wide text-luxury-dark;
+  }
+
+  h4 {
+    @apply font-playfair text-h4 font-semibold tracking-normal text-luxury-dark;
+  }
+
+  p {
+    @apply text-body text-luxury-text-muted;
+  }
+
+  a {
+    @apply text-luxury-gold transition-all duration-300 hover:text-luxury-gold-dark;
+  }
 }
 
-body {
-  font-family: 'Gill Sans', Calibri, sans-serif;
-  background: linear-gradient(120deg, #fffefc 60%, #ffe0e9 100%);
-  color: #333;
-  line-height: 1.6;
-  overflow-x: hidden;
+@layer components {
+  .btn-primary {
+    @apply px-7 py-3 bg-gradient-gold text-luxury-dark font-bold rounded text-sm tracking-wider uppercase transition-all duration-300 hover:shadow-luxury-lg hover:-translate-y-0.5 active:translate-y-0;
+  }
+
+  .btn-secondary {
+    @apply px-7 py-3 bg-transparent border-2 border-luxury-gold text-luxury-gold font-bold rounded text-sm tracking-wider uppercase transition-all duration-300 hover:bg-luxury-gold hover:text-luxury-dark;
+  }
+
+  .btn-tertiary {
+    @apply px-6 py-2 bg-transparent text-luxury-gold font-semibold rounded text-xs tracking-widest uppercase hover:text-luxury-gold-dark transition-colors duration-300;
+  }
+
+  .card {
+    @apply bg-white rounded-lg border border-luxury-border shadow-card hover:shadow-card-hover transition-all duration-300 hover:border-luxury-gold;
+  }
+
+  .card-hover {
+    @apply hover:-translate-y-2 hover:shadow-card-hover hover:border-luxury-gold;
+  }
+
+  .section-title {
+    @apply font-playfair text-h1 text-luxury-text-dark text-center mb-5 tracking-wider relative pb-5;
+  }
+
+  .section-title::after {
+    content: '';
+    @apply absolute bottom-0 left-1/2 -translate-x-1/2 w-20 h-0.5 bg-gradient-to-r from-transparent via-luxury-gold to-transparent;
+  }
+
+  .input-luxury {
+    @apply w-full px-4 py-3 bg-white border-2 border-luxury-border rounded text-luxury-text-dark font-montserrat text-sm focus:outline-none focus:border-luxury-gold focus:ring-2 focus:ring-luxury-gold focus:ring-opacity-10 transition-all duration-300;
+  }
+
+  .badge {
+    @apply inline-block px-3 py-1 bg-luxury-gold text-luxury-dark rounded text-xs font-bold tracking-widest uppercase;
+  }
+
+  .badge-outline {
+    @apply inline-block px-3 py-1 border-2 border-luxury-gold text-luxury-gold rounded text-xs font-bold tracking-widest uppercase;
+  }
 }
 
-button {
-  font-family: inherit;
-  border: none;
-  outline: none;
+/* ===== SCROLLBAR STYLING ===== */
+::-webkit-scrollbar {
+  width: 10px;
 }
 
-Link {
-  text-decoration: none;
+::-webkit-scrollbar-track {
+  background: #f5f1e8;
 }
 
-/* Responsive utility classes */
+::-webkit-scrollbar-thumb {
+  background: #d4af37;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #c9a961;
+}
+
+/* ===== SELECTION COLOR ===== */
+::selection {
+  background-color: #d4af37;
+  color: #0a0a0a;
+}
+
+/* ===== DARK SURFACE TEXT OVERRIDES ===== */
+.on-dark {
+  color: #f5f1e8;
+}
+
+.on-dark h1,
+.on-dark h2,
+.on-dark h3,
+.on-dark h4 {
+  color: #f5f1e8;
+}
+
+.on-dark p,
+.on-dark li,
+.on-dark label,
+.on-dark span {
+  color: rgba(245, 241, 232, 0.82);
+}
+
+/* ===== ACCESSIBILITY ===== */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Utility Classes */
 .hide-mobile {
   display: block;
 }

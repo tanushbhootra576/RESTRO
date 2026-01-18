@@ -1,87 +1,392 @@
-/* 
-body,
-html {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+/* ===== HOME PAGE SECTIONS ===== */
+.home-section {
+    padding: 80px 20px;
+    background: #f5f1e8;
 }
 
-
-#hero {
-    position: relative;
-    height: 100vh;
-    background: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.65)),
-        url("https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1600&q=80");
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    flex-direction: column;
+.home-section:nth-child(even) {
+    background: white;
 }
 
-
-#hero::before {
-    content: "";
-    position: absolute;
-    bottom: -60px;
-    left: -80px;
-    width: 220px;
-    height: 220px;
-    background: rgba(255, 112, 67, 0.15);
-    border-radius: 50%;
-    filter: blur(40px);
-    z-index: 0;
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-#hero::after {
-    content: "";
-    position: absolute;
-    top: 80px;
-    right: -100px;
-    width: 260px;
-    height: 260px;
-    background: rgba(255, 179, 71, 0.12);
-    border-radius: 50%;
-    filter: blur(60px);
-    z-index: 0;
-}
-
-
-#hero-content {
-
-    max-width: 700px;
-    color: #fff;
-    z-index: 1;
-    padding: 0 20px;
-}
-
-#slogan {
-    font-size: 3.2rem;
-    font-weight: 800;
-    line-height: 1.2;
-    text-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+.section-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: #0a0a0a;
     margin-bottom: 20px;
+    text-align: center;
+    letter-spacing: 0.5px;
+    position: relative;
+    padding-bottom: 20px;
 }
 
-.hero-tagline {
-    font-size: 1.25rem;
-    color: #ffe0b2;
-    margin: 18px auto 32px;
-    max-width: 540px;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+.section-heading::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, #d4af37, transparent);
+    margin: 20px auto 0;
 }
 
-.cta-btn {
-    display: inline-block;
-    background: linear-gradient(90deg, #ff7043 0%, #ffb347 100%);
-    color: #fff;
+.section-description {
+    text-align: center;
+    color: #6b6b6b;
     font-size: 1.1rem;
+    margin-bottom: 60px;
+    font-weight: 400;
+    letter-spacing: 0.4px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ===== FEATURED RESTAURANTS ===== */
+.restaurants-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.restaurant-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.restaurant-card:hover {
+    box-shadow: 0 12px 35px rgba(212, 175, 55, 0.15);
+    transform: translateY(-8px);
+    border: 1px solid #d4af37;
+}
+
+.restaurant-image {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.restaurant-card:hover .restaurant-image {
+    transform: scale(1.08);
+}
+
+.restaurant-info {
+    padding: 25px;
+    border-top: 2px solid #f5f1e8;
+}
+
+.restaurant-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #0a0a0a;
+    margin-bottom: 8px;
+    letter-spacing: 0.3px;
+}
+
+.restaurant-cuisine {
+    color: #d4af37;
+    font-size: 0.9rem;
     font-weight: 600;
-    padding: 14px 36px;
-    border-radius: 30px;
-    text-decoration: none;
-    box-shadow: 0 4px 16px rgba(255, 112, 67, 0.25);
-    transition: background 0.3s ease, transform 0.2s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 12px;
+}
+
+.restaurant-rating {
+    color: #6b6b6b;
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+
+.restaurant-description {
+    color: #9a8a7e;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.view-menu-btn {
+    width: 100%;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #d4af37 0%, #c9a961 100%);
+    color: #0a0a0a;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.view-menu-btn:hover {
+    background: linear-gradient(135deg, #c9a961 0%, #b59940 100%);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+    transform: translateY(-2px);
+}
+
+/* ===== FEATURED DISHES ===== */
+.dishes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.dish-card {
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.08);
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.dish-card:hover {
+    box-shadow: 0 12px 35px rgba(212, 175, 55, 0.15);
+    transform: translateY(-8px);
+}
+
+.dish-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.dish-card:hover .dish-image {
+    transform: scale(1.1);
+}
+
+.dish-details {
+    padding: 25px;
+}
+
+.dish-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    color: #0a0a0a;
     margin-bottom: 10px;
+    letter-spacing: 0.3px;
+}
+
+.dish-cuisine {
+    color: #d4af37;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 10px;
+}
+
+.dish-description {
+    color: #9a8a7e;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    font-style: italic;
+}
+
+.dish-price {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: #d4af37;
+    font-weight: 600;
+    margin-top: 15px;
+}
+
+/* ===== SERVICES SECTION ===== */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.service-item {
+    text-align: center;
+    padding: 40px 20px;
+    border-radius: 8px;
+    background: white;
+    transition: all 0.3s ease;
+    border: 1px solid #e0d5c7;
+}
+
+.service-item:hover {
+    box-shadow: 0 12px 35px rgba(212, 175, 55, 0.15);
+    border-color: #d4af37;
+    transform: translateY(-8px);
+}
+
+.service-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 25px;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(139, 58, 58, 0.05) 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    border: 2px solid rgba(212, 175, 55, 0.2);
+}
+
+.service-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: #0a0a0a;
+    margin-bottom: 15px;
+    letter-spacing: 0.3px;
+}
+
+.service-description {
+    color: #9a8a7e;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    font-style: italic;
+}
+
+/* ===== PROMO/BANNER SECTIONS ===== */
+.promo-banner {
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    color: white;
+    padding: 80px 20px;
+    text-align: center;
+    border-top: 3px solid #d4af37;
+}
+
+.promo-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    letter-spacing: 0.5px;
+}
+
+.promo-subtitle {
+    font-size: 1.1rem;
+    color: #d4af37;
+    margin-bottom: 30px;
+    letter-spacing: 0.5px;
+}
+
+.promo-cta {
+    background: linear-gradient(135deg, #d4af37 0%, #c9a961 100%);
+    color: #0a0a0a;
+    padding: 14px 40px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.3);
+}
+
+.promo-cta:hover {
+    background: linear-gradient(135deg, #c9a961 0%, #b59940 100%);
+    box-shadow: 0 12px 35px rgba(212, 175, 55, 0.4);
+    transform: translateY(-2px);
+}
+
+/* ===== TESTIMONIALS ===== */
+.testimonials-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.testimonial-card {
+    background: white;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.08);
+    border-left: 4px solid #d4af37;
+    transition: all 0.3s ease;
+}
+
+.testimonial-card:hover {
+    box-shadow: 0 12px 35px rgba(212, 175, 55, 0.15);
+    transform: translateY(-4px);
+}
+
+.testimonial-text {
+    color: #6b6b6b;
+    font-size: 0.95rem;
+    line-height: 1.8;
+    margin-bottom: 20px;
+    font-style: italic;
+}
+
+.testimonial-author {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: #0a0a0a;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.testimonial-role {
+    color: #d4af37;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .section-heading {
+        font-size: 2rem;
+    }
+
+    .dishes-grid,
+    .restaurants-grid,
+    .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .promo-title {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-section {
+        padding: 40px 15px;
+    }
+
+    .section-heading {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+    }
+
+    .section-description {
+        font-size: 1rem;
+        margin-bottom: 40px;
+
+
+
+        text-decoration: none;
+        box-shadow: 0 4px 16px rgba(255, 112, 67, 0.25);
+        transition: background 0.3s ease,
+            transform 0.2s ease;
+        margin-bottom: 10px;
+    }
 }
 
 .cta-btn:hover {
@@ -139,15 +444,9 @@ html {
     .section-title {
         font-size: 2rem;
     }
-} */
+}
 
-
-
-
-
-
-
-
+*/
 
 /* General styles */
 #main {
@@ -182,6 +481,7 @@ html {
     text-align: center;
     max-width: 700px;
     padding: 0 20px;
+    color: #f5f1e8;
 }
 
 #slogan {
@@ -190,6 +490,8 @@ html {
     line-height: 1.2;
     margin-bottom: 1rem;
     animation: fadeInUp 1s ease forwards;
+    color: #f5f1e8;
+    text-shadow: 0 6px 18px rgba(0, 0, 0, 0.55);
 }
 
 .hero-tagline {
@@ -197,6 +499,8 @@ html {
     font-weight: 300;
     margin-bottom: 2rem;
     animation: fadeInUp 1.5s ease forwards;
+    color: rgba(245, 241, 232, 0.86);
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
 }
 
 .hero-tagline .brand {

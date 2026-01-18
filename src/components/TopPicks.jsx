@@ -1,33 +1,63 @@
-import { useMemo } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import "./TopPicks.css";
-import { getRandomTopPicks } from '../utils/topPicks';
+import menuService from '../services/menuService';
+import { useCart } from '../context/CartContext';
+import { useAuth } from '../hooks/useAuth';
 
 const TopPicks = () => {
-    // Memoize so random picks only change on mount
-    const items = useMemo(() => getRandomTopPicks(8), []);
+    const [items, setItems] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
+    const { isAuthenticated } = useAuth();
+    const { addToCart } = useCart();
+
+    useEffect(() => {
+        const fetchTopPicks = async () => {
+            try {
+                const response = await menuService.getMenuItems();
+                const allItems = response?.data?.menuItems || [];
+                const shuffled = [...allItems].sort(() => 0.5 - Math.random());
+                setItems(shuffled.slice(0, 8));
+            } catch (error) {
+                setItems([]);
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchTopPicks();
+    }, []);
+
+    const handleAddToCart = async (item) => {
+        if (!isAuthenticated) {
+            navigate('/login', { state: { from: '/menu' } });
+            return;
+        }
+
+        const restaurantId = item.restaurant?._id || item.restaurant;
+
+        await addToCart({
+            restaurant: restaurantId,
+            menuItem: item._id,
+            quantity: 1
+        });
+    };
     return (
-        <div id="famous" style={{ marginTop: 20 }}>
-            <div id="famhead" style={{ textAlign: 'center', backgroundColor: 'black', color: 'white' }}>TOP PICKS</div>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: 20, justifyContent: 'center' }}>
-                {items.map((item, idx) => (
-                    <div key={idx} className="card">
-                        <div style={{ display: 'flex' }}>
-                            <img src={item.img} className="img" alt={item.name} />
-                            <h4 className="itemname" style={{ fontSize: 28 }}>{item.name}</h4>
+        <div id="famous" className="top-picks">
+            <div id="famhead" className="top-picks-title">Top Picks</div>
+            <div className="top-picks-grid">
+                {loading && <p className="top-picks-loading">Loading top picks...</p>}
+                {!loading && items.map((item) => (
+                    <div key={item._id} className="top-pick-card">
+                        <div className="top-pick-header">
+                            <img src={item.image || '/images/dish.png'} className="top-pick-img" alt={item.name} />
+                            <h4 className="top-pick-name">{item.name}</h4>
                         </div>
-                        <p className="info">The top choice among all our customers, delicious, healthy and a part of an amazing meal!</p>
-                        <div className="rating" style={{ display: 'flex', alignItems: 'center', marginLeft: 25, marginTop: 9 }}>
-                            {/* Render filled and empty stars based on item.rate (out of 5) */}
-                            {Array.from({ length: 5 }).map((_, i) => (
-                                <span key={i} style={{ color: i < Math.round(item.rate) ? '#FFD700' : '#ccc', fontSize: 24, marginRight: 2 }}>
-                                    ★
-                                </span>
-                            ))}
-                            <div style={{ marginLeft: 10, fontWeight: 'bold', fontSize: 16 }}>{item.rate}/5</div>
-                        </div>
-                        <div style={{ display: 'flex', marginTop: 20, marginLeft: 20, width: '90%', height: 47 }}>
-                            <div className="amt">₹ {item.price}</div>
-                            <button id="addtocart" onClick={() => alert('Item has been added to the bag')}>ADD TO CART</button>
+                        <p className="top-pick-info">{item.description || 'Signature chef selection crafted for discerning diners.'}</p>
+                        <div className="top-pick-footer">
+                            <div className="top-pick-amt">₹{item.price}</div>
+                            <button className="top-pick-btn" onClick={() => handleAddToCart(item)}>Add to Cart</button>
                         </div>
                     </div>
                 ))}

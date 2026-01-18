@@ -1,5 +1,5 @@
 import React from 'react';
-import Navbar from './Navbar';
+import Navbar from './layout/Navbar';
 import './Sevices.css';
 
 const services = [
@@ -39,19 +39,38 @@ const Services = () => {
     return (
         <>
             <Navbar />
-            <div className="services-container">
-                <h1>Our Services</h1>
-                <div className="services-grid">
-                    {services.map((service, index) => (
-                        <div className="service-card" key={index}>
-                            <img src={service.image} alt={service.title} />
-                            <div className="service-info">
-                                <h2>{service.title}</h2>
-                                <p>{service.description}</p>
-                            </div>
+            <div className="services-page">
+                <section className="services-hero">
+                    <div className="services-hero-content">
+                        <p className="services-eyebrow">Curated Experiences</p>
+                        <h1 className="services-hero-title">Our Services</h1>
+                        <p className="services-hero-subtitle">
+                            Discover a collection of premium dining experiences crafted with
+                            elegance, comfort, and attention to every detail.
+                        </p>
+                        <div className="services-hero-badges">
+                            <span className="services-hero-badge">Luxury Dining</span>
+                            <span className="services-hero-badge">Premium Catering</span>
+                            <span className="services-hero-badge">Private Events</span>
                         </div>
-                    ))}
-                </div>
+                    </div>
+                </section>
+
+                <section className="services-section">
+                    <div className="services-grid">
+                        {services.map((service, index) => (
+                            <article className="service-card" key={index}>
+                                <div className="service-card-media">
+                                    <img src={service.image} alt={service.title} />
+                                </div>
+                                <div className="service-info">
+                                    <h2>{service.title}</h2>
+                                    <p>{service.description}</p>
+                                </div>
+                            </article>
+                        ))}
+                    </div>
+                </section>
             </div>
         </>
     );

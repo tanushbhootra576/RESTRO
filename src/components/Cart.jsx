@@ -1,20 +1,20 @@
 import React from 'react';
 import { useCart } from '../context/CartContext';
-import { Link } from 'react-router-dom';
-import Navbar from './Navbar';
+import { Link, useNavigate } from 'react-router-dom';
 import './Cart.css';
 
 const Cart = () => {
-    const { cart, dispatch } = useCart();
-    const total = cart.items.reduce((sum, item) => sum + item.price * item.qty, 0);
+    const navigate = useNavigate();
+    const { cart, removeFromCart } = useCart();
+    const cartItems = Array.isArray(cart?.items) ? cart.items : [];
+    const total = cartItems.reduce((sum, item) => sum + item.price * (item.quantity ?? item.qty ?? 0), 0);
 
     return (
         <>
-            <Navbar />
             <div className="cart-container">
                 <h2 className="cart-title">Your Shopping Cart</h2>
 
-                {cart.items.length === 0 ? (
+                {cartItems.length === 0 ? (
                     <div className="empty-cart">
                         <p>Your cart is empty.</p>
                         <Link to="/menu" className="back-btn">Browse Menu</Link>
@@ -22,17 +22,17 @@ const Cart = () => {
                 ) : (
                     <>
                         <ul className="cart-list">
-                            {cart.items.map((item) => (
-                                <li key={item.name} className="cart-item">
-                                    <img src={item.image} alt={item.name} className="cart-img" />
+                            {cartItems.map((item) => (
+                                <li key={item.menuItem?._id || item.name} className="cart-item">
+                                    <img src={item.menuItem?.image || '/images/dish.png'} alt={item.menuItem?.name || item.name} className="cart-img" />
                                     <div className="cart-info">
-                                        <div className="cart-name">{item.name}</div>
+                                        <div className="cart-name">{item.menuItem?.name || item.name}</div>
                                         <div className="cart-meta">
-                                            ₹{item.price} × {item.qty}
+                                            ₹{item.price} × {item.quantity ?? item.qty ?? 0}
                                         </div>
                                     </div>
                                     <button
-                                        onClick={() => dispatch({ type: 'REMOVE_FROM_CART', payload: item })}
+                                        onClick={() => removeFromCart(item.menuItem?._id || item.menuItem)}
                                         className="remove-btn"
                                     >
                                         Remove
@@ -47,7 +47,7 @@ const Cart = () => {
                                 <strong>₹{total}</strong>
                             </div>
                             <div className="cart-actions">
-                                <button className="checkout-btn">Proceed to Checkout</button>
+                                <button className="checkout-btn" onClick={() => navigate('/checkout')}>Proceed to Checkout</button>
                                 <Link to="/menu" className="continue-link">
                                     Continue Shopping
                                 </Link>

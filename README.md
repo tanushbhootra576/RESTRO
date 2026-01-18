@@ -1,69 +1,94 @@
 
-   ## Restro – Luxurious Restaurant Website
+      ## Restro Restaurant Platform
 
-   Welcome to **Restro**, a responsive and visually elegant restaurant-themed website built using **React** and **React Router DOM**. This project showcases a modern front-end UI with smooth navigation, stylish design, and placeholder features like "Coming Soon" pages.
+      Restro is a full-stack restaurant platform with a React frontend and a Node.js/Express backend. It supports browsing menus, cart management, orders, bookings, coupons, and an owner/admin dashboard.
 
-   ## Features
+      ## Tech Stack
 
-   - **Navbar with Routing** – Fixed, responsive navbar using `react-router-dom`.
-   - **Menu Page** – Beautifully designed grid of 12 dishes with images and pricing.
-   - **Contact Us Page** – Includes contact info, and social media follow section.
-   - **Services Page** – grid layout showing premium services with images.
-   - **Bookings & Coupons** – Dedicated pages with "Coming Soon" messages.
-   - **Cart Button** – Added to each menu item (functionality optional).
-   - **Footer** – Contact info, quick links, branding, and social media icons.
+      - Frontend: React, Vite, Tailwind utilities, custom CSS
+      - Backend: Node.js, Express, MongoDB, Mongoose
+      - Auth: JWT
 
-   ## Tech Stack
+      ## Project Structure
 
-   - **Frontend**: React.js
-   - **Routing**: React Router DOM
-   - **Styling**: Custom CSS 
-   - **Icons**: Flaticon & Public URLs
+      - src/ (frontend)
+      - backend/ (API server)
 
-   ## Project Structure
+      ## Setup
 
-   ```
-   src/
-   │
-   ├── components/
-   │   ├── Navbar.jsx
-   │   ├── TopPicks.jsx
-   │   ├── Menu.jsx
-   │   ├── Contact.jsx
-   │   ├── Services.jsx
-   │   ├── Bookings.jsx
-   │   ├── Coupons.jsx
-   │   ├── Review.jsx
-   │   ├── Footer.jsx
-   │   ├── *.css
-   │
-   ├── App.js
-   ├── index.js
-   ```
+      1) Install dependencies
 
+      - Frontend
+         - npm install
+      - Backend
+         - cd backend
+         - npm install
 
-   ## Getting Started
+      2) Environment configuration
 
-   1. **Clone the repository**
-      ```bash
-      git clone https://github.com/tanushbhootra576/restro.git
-      cd restrolux
+      - Backend: create backend/.env with MongoDB and JWT settings.
+
+      3) Run locally
+
+      - Frontend
+         - npm run dev
+      - Backend
+         - cd backend
+         - npm run dev
+
+      4) Seed data (optional)
+
+      - cd backend
+      - npm run seed
+
+      ## Notes
+
+      - The checkout flow uses a mock payment form and creates an order in the backend.
+      - Owner accounts need a restaurant profile to manage menu items.
+      ## Project Structure
+
+      ```
+      src/
+      │
+      ├── components/
+      │   ├── Navbar.jsx
+      │   ├── TopPicks.jsx
+      │   ├── Menu.jsx
+      │   ├── Contact.jsx
+      │   ├── Services.jsx
+      │   ├── Bookings.jsx
+      │   ├── Coupons.jsx
+      │   ├── Review.jsx
+      │   ├── Footer.jsx
+      │   ├── *.css
+      │
+      ├── App.js
+      ├── index.js
       ```
 
-   2. **Install dependencies**
-      ```bash
-      npm install
-      ```
 
-   3. **Run the app**
-      ```bash
-      npm start
-      ```
+      ## Getting Started
 
-   4. Visit `http://localhost:3000` in your browser 🎉
+      1. **Clone the repository**
+         ```bash
+         git clone https://github.com/tanushbhootra576/restro.git
+         cd restrolux
+         ```
 
-   ##  Contributing
+      2. **Install dependencies**
+         ```bash
+         npm install
+         ```
 
-   Feel free to fork this project, make enhancements, and open pull requests!
+      3. **Run the app**
+         ```bash
+         npm start
+         ```
 
-   ###  Developed by Tanush Bhootra
+      4. Visit `http://localhost:3000` in your browser 🎉
+
+      ##  Contributing
+
+      Feel free to fork this project, make enhancements, and open pull requests!
+
+      ###  Developed by Tanush Bhootra
